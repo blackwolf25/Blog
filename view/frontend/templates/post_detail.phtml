@@ -1,0 +1,76 @@
+<?php
+
+    $post_detail = $block->getPost();
+    $post = [
+        'id'          => $post_detail->getId(),
+        'name'        => $post_detail->getName(),
+        'thumbnail'   => $post_detail->getThumbnail(),
+        'description' => $post_detail->getDescription(),
+        'content'     => $post_detail->getContent(),
+        'created_at'     => $post_detail->getCreatedAt(),
+    ];
+
+    $post_create_at = date('d-m-Y',strtotime($post['created_at']));
+?>
+<div class="blog-container">
+
+    <div class="left float-left">
+            <div class="post-detail">
+                <div class="title">
+                    <h1><?php echo $post['name'] ?></h1>
+                </div>
+                <div class="post-date">
+                    <div class="row">
+                        <div class="col-6 float-left">
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $post_create_at ?></p>
+                        </div>
+                        <div class="col-6 float-right">
+                            <p><i class="fa fa-eye" aria-hidden="true"></i> 5738</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img src="<?php echo $post['thumbnail']?>" alt="">
+                </div>
+                <div class="description">
+                    <h4><?php echo $post['description']?></h4>
+                </div>
+                <div class="content">
+                    <p><?php echo $post['content'] ?></p>
+                </div>
+            </div>
+            <div class="post-category">
+                <h3>Bài viết cùng chủ đề</h3>
+                <ul>
+                    <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Accusamus aut beatae consequuntur ea est eum non officiis perspiciatis quia, quisquam?orem20</a></li>
+                    <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Accusamus aut beatae consequuntur ea est eum non officiis perspiciatis quia, quisquam?orem20</a></li>
+                    <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Accusamus aut beatae consequuntur ea est eum non officiis perspiciatis quia, quisquam?orem20</a></li>
+                    <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Accusamus aut beatae consequuntur ea est eum non officiis perspiciatis quia, quisquam?orem20</a></li>
+                    <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Accusamus aut beatae consequuntur ea est eum non officiis perspiciatis quia, quisquam?orem20</a></li>
+                </ul>
+            </div>
+    </div>
+    <div class="right float-left">
+        <div class="view">
+            <h3>Xem nhiều nhất</h3>
+            <ul>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+            </ul>
+        </div>
+        <div class="sale">
+            <h3>Khuyến mãi</h3>
+            <ul>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

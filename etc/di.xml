@@ -1,0 +1,33 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smart_blog_post_listing_data_source" xsi:type="string">Smart\Blog\Model\ResourceModel\Post\Grid\Collection</item>
+                <item name="smart_blog_category_listing_data_source" xsi:type="string">Smart\Blog\Model\ResourceModel\Category\Grid\Collection</item>
+                <item name="smart_blog_tag_listing_data_source" xsi:type="string">Smart\Blog\Model\ResourceModel\Tag\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--    Post  -->
+    <virtualType name="Smart\Blog\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_blog_post</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Blog\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+    <!--    Category  -->
+    <virtualType name="Smart\Blog\Model\ResourceModel\Category\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_blog_category</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Blog\Model\ResourceModel\Category</argument>
+        </arguments>
+    </virtualType>
+    <!--    Tag  -->
+    <virtualType name="Smart\Blog\Model\ResourceModel\Tag\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_blog_tag</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\Blog\Model\ResourceModel\Tag</argument>
+        </arguments>
+    </virtualType>
+</config>

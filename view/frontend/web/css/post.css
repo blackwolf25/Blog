@@ -1,0 +1,38 @@
+.left{
+    width: 650px;
+    margin-top: 20px;
+    border-right: 1px solid #E2E2E3;
+}
+.left .row{
+    border-bottom: 1px dotted #e2e2e3;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.left .bottom{
+    text-align: center;
+}
+.thumbnail{
+    width: 200px;
+    cursor: pointer;
+}
+.thumbnail>img{
+    width: 100%;
+}
+h3.title{
+    margin: 0px;
+    color: dodgerblue;
+}
+.right{
+    width: 330px;
+}
+.right h3{
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+.right ul>li{
+    line-height: 25px;
+}
+.right .view{
+    border-bottom: 1px solid #E2E2E3;
+    margin-bottom: 50px;
+}

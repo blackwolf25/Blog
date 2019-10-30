@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Smart_Blog::blog"
+             title="Blog"
+             module="Smart_Blog"
+             sortOrder="51"
+             resource="Smart_Blog::blog"
+        />
+        <add id="Smart_Blog::post"
+             title="Manage Posts"
+             module="Smart_Blog"
+             sortOrder="10"
+             action="smart_blog/post"
+             resource="Smart_Blog::post"
+             parent="Smart_Blog::blog"
+        />
+        <add id="Smart_Blog::category"
+             title="Manage Categories"
+             module="Smart_Blog"
+             sortOrder="10"
+             action="smart_blog/category"
+             resource="Smart_Blog::category"
+             parent="Smart_Blog::blog"
+        />
+        <add id="Smart_Blog::product"
+             title="Manage Tags"
+             module="Smart_Blog"
+             sortOrder="10"
+             action="smart_blog/tag"
+             resource="Smart_Blog::tag"
+             parent="Smart_Blog::blog"
+        />
+    </menu>
+</config>

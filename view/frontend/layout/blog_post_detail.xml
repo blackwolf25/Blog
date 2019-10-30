@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <css src="Smart_Blog/css/style.css"/>
+        <css src="Smart_Blog/css/sidebar.css"/>
+        <css src="Smart_Blog/css/post.css"/>
+        <css src="Smart_Blog/css/menu.css"/>
+        <css src="Smart_Blog/css/paginate.css"/>
+        <css src="Smart_Blog/css/font-awesome.min.css"/>
+        <css src="Smart_Blog/css/font-awesome.css"/>
+        <link src="Smart_Blog/js/script.js"/>
+        <link src="Smart_Blog/js/menu.js"/>
+    </head>
+    <referenceContainer name="sidebar.main">
+        <block class="Smart\Blog\Block\Frontend\SideBar" name="blog_frontend_sidbarleft" template="Smart_Blog::sidebar.phtml"/>
+    </referenceContainer>
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    <referenceBlock name="wishlist_sidebar" remove="true" />
+
+    <referenceContainer name="content">
+        <block class="Smart\Blog\Block\Frontend\PostDetail" name="Blog_frontend_content" template="Smart_Blog::post_detail.phtml" />
+    </referenceContainer>
+
+</page>

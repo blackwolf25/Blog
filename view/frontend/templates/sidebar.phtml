@@ -1,0 +1,52 @@
+<?php
+    $list_cat=[];
+    foreach ($block->getCatCollection() as $key=>$post){
+        $list_cat[]=
+            [
+                'id'=>$post->getId(),
+                'parent_id'=>$post->getParentId(),
+                'name'=>$post->getName()
+            ];
+    }
+
+$list_tag=[];
+foreach ($block->getTagCollection() as $key=>$tag){
+    $list_tag[]=
+        [
+            'id'=>$tag->getId(),
+            'name'=>$tag->getName()
+        ];
+}
+?>
+<div class="blog-sidebar">
+    <div class="category">
+            <h3>CATEGORY</h3>
+        <div class="tree-menu">
+            <?php   $block->showCategories($list_cat,0,''); ?>
+        </div>
+    </div>
+    <div class="tag">
+            <h3>TAG</h3>
+        <div class="list-tag">
+            <ul>
+                <?php
+                    foreach($list_tag as $tag){
+                ?>
+                <li><a href="<?php echo $this->getUrl('*/tag/',['id' => $tag['id']]);?>"><?php echo $tag['name']?></a></li>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+    <div class="search">
+        <h3>SEARCH</h3>
+        <div class="form">
+            <form action="">
+                <div class="form-wrapper">
+                    <input type="text" class="input-search">
+                    <input type="button" class="input-button" value="Search">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

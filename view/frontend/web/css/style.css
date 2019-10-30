@@ -1,0 +1,88 @@
+.col-4{
+    width: 33.33%;
+}
+.col-6{
+    width: 50%;
+}
+.col-8{
+    width: 66.66%;
+}
+.clearfix{
+    clear: both;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+/*Paginate*/
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #006bb4;
+    color: white;
+    border: 1px solid #006bb4;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+h3.category-title{
+    cursor: pointer;
+    margin: 0px;
+    font-size: 30px;
+    color: #006bb4;
+    padding-bottom: 10px;
+}
+
+/* post detail */
+.post-detail{
+    width: 95%;
+}
+.left .post-detail .row{
+    border: none;
+    margin: 20px 0;
+}
+.post-detail .title>h1{
+    margin: 0;
+    font-weight: 600;
+}
+.post-detail .thumbnail{
+    width: 100%;
+}
+.post-detail .post-date .float-right>p{
+    float: right;
+}
+.post-detail .description h4{
+    line-height: 25px;
+    font-size: 16px;
+    text-align: justify;
+}
+.post-detail .content p{
+    text-align: justify;
+    line-height: 25px;
+    font-size: 16px;
+}
+.post-category{
+    border-top: 1px solid #E2E2E3;
+    margin-top: 50px;
+}
