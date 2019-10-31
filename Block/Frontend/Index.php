@@ -33,10 +33,14 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     public function getPost(){
+
+        $now = new \DateTime();
         $page = ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
         $pageSize = ($this->getRequest()->getParam('limit')) ? $this->getRequest()->getParam('limit') :5;
         $postCollection = $this->_postFactory->create()->getCollection();
         $postCollection->addFieldToFilter('status', ['eq' => "1"]);
+        $postCollection->addFieldToFilter('publish_date_from', ['gteq' => $now->format('Y-m-d H:i:s')])
+                       ->addFieldToFilter('publish_date_to', ['lteq' => $now->format('Y-m-d H:i:s')]);
         $postCollection->setPageSize($pageSize);
         $postCollection->setCurPage($page);
 

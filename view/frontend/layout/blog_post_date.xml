@@ -7,13 +7,9 @@
         <css src="Smart_Blog/css/sidebar.css"/>
         <css src="Smart_Blog/css/post.css"/>
         <css src="Smart_Blog/css/menu.css"/>
-        <css src="Smart_Blog/css/fontawesome.min.css"/>
         <css src="Smart_Blog/css/paginate.css"/>
-        <css src="Smart_Blog/libs/daterangepicker.css"/>
         <link src="Smart_Blog/js/script.js"/>
         <link src="Smart_Blog/js/menu.js"/>
-        <link src="Smart_Blog/libs/moment.min.js"/>
-        <link src="Smart_Blog/libs/daterangepicker.js"/>
     </head>
     <referenceContainer name="sidebar.main">
         <block class="Smart\Blog\Block\Frontend\SideBar" name="blog_frontend_sidbarleft" template="Smart_Blog::sidebar.phtml"/>
@@ -22,7 +18,7 @@
     <referenceBlock name="wishlist_sidebar" remove="true" />
 
     <referenceContainer name="content">
-        <block class="Smart\Blog\Block\Frontend\Tag" name="Blog_frontend_content" template="Smart_Blog::tag_post.phtml" />
+        <block class="Smart\Blog\Block\Frontend\Date" name="Blog_frontend_content" template="Smart_Blog::post_date.phtml" />
     </referenceContainer>
 
 </page>

@@ -1,0 +1,44 @@
+
+.blog-sidebar{
+    margin-bottom: 10px;
+}
+.blog-sidebar h3{
+    font-size: 20px;
+}
+.blog-sidebar ul li{
+    list-style: none;
+}
+.category ul li a{
+    font-size: 18px;
+    color: #006bb4;
+}
+.list-tag ul{
+    margin: 0px;
+    padding: 0px;
+}
+.list-tag ul>li{
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: aliceblue;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.list-tag ul>li a{
+    color: #006bb4;
+}
+.form-wrapper{
+    position: relative;
+}
+.form form .input-search{
+    border-radius: 5px;
+}
+.form form .input-button{
+    height: 100%;
+    right: 0px;
+    position: absolute;
+    color: white;
+    background-color: #006bb4;
+}
+.category {
+    margin-bottom: 67px;
+}

@@ -17,7 +17,6 @@ class Save extends Action
         \Smart\Blog\Model\PostFactory $postFactory,
         \Smart\Blog\Model\CatPostFactory $catpostFactory,
         \Smart\Blog\Model\TagPostFactory $tagpostFactory
-
     ) {
 
         $this->dataPersistor = $dataPersistor;
@@ -33,9 +32,10 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
 
 
+
         if ($data) {
             $id = $this->getRequest()->getParam('id');
-            if(empty($id)){
+            if(!empty($id)){
                 $model = $this->postFactory->create()->load($id);
                 if (!$model->getId() && $id) {
                     $this->messageManager->addErrorMessage(__('This post no longer exists.'));
@@ -46,14 +46,17 @@ class Save extends Action
                 $model = $this->postFactory->create();
             }
             $image=$model->getData('thumbnail');
+            $data['gallery'] = '';
+            // create url-key
+            $data['url'] = $this->postSlug($data['name']);
             $model->setData($data);
+
             if (isset($data['post_image'][0]['url']))
             {
                 $model->setData('thumbnail',$data['post_image'][0]['url']);
             }else {
                 $model->setData('thumbnail',$image);
             }
-
 
             try {
 
@@ -116,6 +119,30 @@ class Save extends Action
         return $resultRedirect->setPath('*/*/');
     }
 
+    public function postSlug($text){
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
+    }
     public function redirectPath($resultRedirect, $id)
     {
         return $id ? $resultRedirect->setPath('*/*/edit', ['id' => $id]) : $resultRedirect->setPath('*/*/new');

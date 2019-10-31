@@ -8,8 +8,9 @@
         <css src="Smart_Blog/css/post.css"/>
         <css src="Smart_Blog/css/menu.css"/>
         <css src="Smart_Blog/css/paginate.css"/>
-        <link src="Smart_Blog/js/script.js"/>
+        <css src="Smart_Blog/libs/daterangepicker.css"/>
         <link src="Smart_Blog/js/menu.js"/>
+        <link src="Smart_Blog/js/script.js"/>
     </head>
     <referenceContainer name="sidebar.main">
         <block class="Smart\Blog\Block\Frontend\SideBar" name="blog_frontend_sidbarleft" template="Smart_Blog::sidebar.phtml"/>

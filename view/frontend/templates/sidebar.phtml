@@ -40,13 +40,30 @@ foreach ($block->getTagCollection() as $key=>$tag){
     <div class="search">
         <h3>SEARCH</h3>
         <div class="form">
-            <form action="">
+            <form action="<?php echo $this->getUrl('*/post/search')?>" method="get">
                 <div class="form-wrapper">
-                    <input type="text" class="input-search">
-                    <input type="button" class="input-button" value="Search">
+                    <input type="text" class="input-search" name="key">
+                    <input type="submit" placeholder="Type something here" class="input-button" value="Search">
                 </div>
             </form>
         </div>
 
+    </div>
+    <div class="option">
+        <h3>Option</h3>
+        <form action="<?php echo $this->getUrl('*/post/date')?>" method="post">
+            <div class="field overview required" data-role="filter-form" id="date_range">
+                 <span class="field-row">
+                     <label for="date_from"><span><?php echo __('From') ?>:</span> </label>
+                     <input class="input-text required-entry" type="text" id="date_from" name="from"/>
+                       <span id="date_from_advice"></span>
+                 </span>
+                <span class="field-row"><label for="date_to"><span><?php echo __('To') ?>:</span></label>
+                     <input class="input-text required-entry" type="text" id="date_to" name="report_to"/>
+                    <span id="date_to_advice"></span>
+                </span>
+                <input type="submit" placeholder="Type something here" class="input-button" value="Show post">
+            </div>
+        </form>
     </div>
 </div>

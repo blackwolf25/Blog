@@ -1,0 +1,17 @@
+.bottom .pager .toolbar-amount{
+    display: none;
+}
+.bottom .pager .limiter{
+    display: none;
+}
+.bottom .paginate ul li:not(:first-child):not(:last-child) .page{
+    padding: 0 13px;
+    border: 1px solid #006bb4;
+}
+.bottom .paginate ul li strong{
+    color: white;
+    background-color: #006bb4;
+    padding: 0 13px;
+    border: 1px solid #006bb4;
+}
+

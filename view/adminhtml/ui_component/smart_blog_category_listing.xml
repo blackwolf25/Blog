@@ -27,7 +27,7 @@
     <dataSource name="smart_blog_category_listing.smart_blog_category_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
-                <param name="indexField" xsi:type="string">page_id</param>
+                <param name="indexField" xsi:type="string">page_id1</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
@@ -35,7 +35,7 @@
         <dataProvider class="Smart\Blog\Ui\Component\DataProvider" name="smart_blog_category_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
-                <primaryFieldName>page_id</primaryFieldName>
+                <primaryFieldName>id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -81,7 +81,7 @@
                         <message translate="true">Are you sure you want to delete selected items?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="cms/page/massDelete"/>
+                    <url path="smart_blog/category/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>

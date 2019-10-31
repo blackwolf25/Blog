@@ -1,0 +1,77 @@
+<?php
+
+
+$list_post = [];
+foreach ($block->getPost() as $key=>$post){
+    $list_post[]=
+        [
+            'id'=>$post->getId(),
+            'name'=>$post->getName(),
+            'thumbnail' => $post->getThumbnail(),
+            'description' => $post->getDescription(),
+        ];
+}
+$date_post = $block->getKey();
+?>
+<div class="blog-container">
+
+    <div class="left float-left">
+        <?php
+        if(empty($list_post)){
+            echo "<h3> Không tìm thấy </h3>";
+        }else{
+            ?>
+            <h3 class="result-search">Các bài viết từ <span style="color:red"><?php echo $date_post['from'] ?></span> đến <span style="color:red"><?php echo $date_post['to'] ?></span></h3>
+            <div class="content">
+                <?php
+                foreach($list_post as $post){
+                    ?>
+                    <div class="row">
+                        <div class="col-4 float-left">
+                            <a href="<?php echo $this->getUrl('*/post/detail',['id' => $post['id']]);?>">
+                                <div class="thumbnail">
+                                    <img src="<?php echo $post['thumbnail'] ?>" alt="">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-8 float-left">
+                            <h3 class="title"><a href="<?php echo $this->getUrl('*/post/detail',['id' => $post['id']]);?>"><?php echo $post['name'] ?></a></h3>
+                            <div class="description"><?php echo $post['description'] ?></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                <?php } ?>
+            </div>
+<!--            <div class="bottom">-->
+<!--                --><?php //if ($block->getPagerHtml()): ?>
+<!--                    <div class="paginate">-->
+<!--                        --><?php //echo $block->getPagerHtml(); ?>
+<!--                    </div>-->
+<!--                --><?php //endif ?>
+<!--            </div>-->
+        <?php } ?>
+    </div>
+    <div class="right float-left">
+        <div class="view">
+            <h3>Xem nhiều nhất</h3>
+            <ul>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+                <li><a href="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, minus!</a></li>
+            </ul>
+        </div>
+        <div class="sale">
+            <h3>Khuyến mãi</h3>
+            <ul>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+                <li><a href="">Lpsum dolor sit amet, consectetur adipisicing elit. Laudantium, velit!orem10</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

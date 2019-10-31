@@ -39,12 +39,9 @@ class Status extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
+
             foreach ($dataSource['data']['items'] as & $item) {
-                if ($item['status'] == 1) {
-                    $item['status'] = 'Enable';
-                }else{
-                    $item['status'] = 'Disable';
-                }
+                $item['status'] = $item['status'] == 1 ? 'Enable' : 'Disable';
             }
         }
 

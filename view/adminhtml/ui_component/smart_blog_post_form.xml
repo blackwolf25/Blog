@@ -79,6 +79,12 @@
                 <dataScope>name</dataScope>
             </settings>
         </field>
+    </fieldset>
+    <fieldset name="content" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Content</label>
+        </settings>
         <field name="description" sortOrder="30" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -109,6 +115,12 @@
                 <dataScope>content</dataScope>
             </settings>
         </field>
+    </fieldset>
+    <fieldset name="date_public" sortOrder="20">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Date Publish</label>
+        </settings>
         <field name="publish_date_from" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -149,6 +161,12 @@
                 </item>
             </argument>
         </field>
+    </fieldset>
+    <fieldset name="category" sortOrder="30">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Category Tag</label>
+        </settings>
         <field name="category_id" formElement="multiselect" sortOrder="70"  >
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Smart\Blog\Block\Helper\Selectidcat</item>
@@ -175,6 +193,12 @@
                 <dataScope>tag_id</dataScope>
             </settings>
         </field>
+    </fieldset>
+    <fieldset name="image" sortOrder="40">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Image</label>
+        </settings>
         <field name="post_image" sortOrder="65" formElement="fileUploader">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -201,5 +225,25 @@
                 </fileUploader>
             </formElements>
         </field>
+        <field name="gallery">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">geolocation</item>
+                    <item name="label" xsi:type="string" translate="true">Gallery</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">imageUploader</item>
+                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                     <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">gallery</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                    <item name="url" xsi:type="url" path="catalog/category_image/upload"/>
+<!--                        <item name="url" xsi:type="url" path="smart_blog/post/upload"/>-->
+                    </item>
+                </item>
+            </argument>
+        </field>
     </fieldset>
+
 </form>

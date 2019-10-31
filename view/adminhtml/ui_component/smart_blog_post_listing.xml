@@ -27,7 +27,7 @@
     <dataSource name="smart_blog_post_listing.smart_blog_post_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
-                <param name="indexField" xsi:type="string">page_id</param>
+                <param name="indexField" xsi:type="string">id</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
@@ -35,7 +35,7 @@
         <dataProvider class="Smart\Blog\Ui\Component\DataProvider" name="smart_blog_post_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
-                <primaryFieldName>page_id</primaryFieldName>
+                <primaryFieldName>id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
@@ -43,9 +43,38 @@
         <settings>
             <sticky>true</sticky>
         </settings>
-        <bookmark name="bookmarks"/>
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/bookmarks/bookmarks</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="saveUrl" xsi:type="url" path="mui/bookmark/save"/>
+                        <item name="deleteUrl" xsi:type="url" path="mui/bookmark/delete"/>
+                        <item name="namespace" xsi:type="string">smart_blog_post_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
         <columnsControls name="columns_controls"/>
-        <filterSearch name="fulltext"/>
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        smart_blog_post_listing.smart_blog_post_listing_data_source
+                    </item>
+                    <item name="chipsProvider" xsi:type="string">
+                        smart_blog_post_listing.smart_blog_post_listing.listing_top.listing_filters_chips
+                    </item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">
+                            smart_blog_post_listing.smart_blog_post_listing.listing_top.bookmarks
+                        </item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="observers" xsi:type="array">
@@ -74,6 +103,7 @@
                 </settings>
             </filterSelect>
         </filters>
+        <exportButton name="export_button"> </exportButton>
         <massaction name="listing_massaction">
             <action name="delete">
                 <settings>
@@ -81,35 +111,26 @@
                         <message translate="true">Are you sure you want to delete selected items?</message>
                         <title translate="true">Delete items</title>
                     </confirm>
-                    <url path="cms/page/massDelete"/>
+                    <url path="smart_blog/post/massDelete"/>
                     <type>delete</type>
                     <label translate="true">Delete</label>
                 </settings>
             </action>
             <action name="disable">
                 <settings>
-                    <url path="cms/page/massDisable"/>
+                    <url path="smart_blog/post/massDisable"/>
                     <type>disable</type>
                     <label translate="true">Disable</label>
                 </settings>
             </action>
             <action name="enable">
                 <settings>
-                    <url path="cms/page/massEnable"/>
+                    <url path="smart_blog/post/massEnable"/>
                     <type>enable</type>
                     <label translate="true">Enable</label>
                 </settings>
             </action>
-            <action name="edit">
-                <settings>
-                    <callback>
-                        <target>editSelected</target>
-                        <provider>cms_page_listing.cms_page_listing.cms_page_columns_editor</provider>
-                    </callback>
-                    <type>edit</type>
-                    <label translate="true">Edit</label>
-                </settings>
-            </action>
+
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
@@ -131,7 +152,7 @@
                 </param>
             </childDefaults>
         </settings>
-        <selectionsColumn name="ids">
+        <selectionsColumn name="ids" sortOrder="1">
             <settings>
                 <indexField>id</indexField>
                 <resizeEnabled>false</resizeEnabled>
@@ -167,6 +188,14 @@
                     <editorType>text</editorType>
                 </editor>
                 <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="category" class="Smart\Blog\Ui\Component\Listing\Column\Category" sortOrder="100">
+            <settings>
+                <filter>text</filter>
+                <options class="Smart\Blog\Model\ResourceModel\CatPost\Collection"/>
+                <dataType>text</dataType>
+                <label translate="true">Category</label>
             </settings>
         </column>
         <column name="description">

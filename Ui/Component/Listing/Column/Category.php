@@ -20,6 +20,8 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
         \Magento\Catalog\Helper\Image $imageHelper,
         \Magento\Framework\UrlInterface $urlBuilder,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Smart\Blog\Model\CatPostFactory $catpostFactory,
+        \Smart\Blog\Model\CategoryFactory $categoryFactory,
         array $components = [],
         array $data = []
     ) {
@@ -27,31 +29,41 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
         $this->imageHelper = $imageHelper;
         $this->storeManager=$storeManager;
         $this->urlBuilder = $urlBuilder;
+        $this->catpostFactory = $catpostFactory;
+        $this->categoryFactory = $categoryFactory;
     }
 
-    /**
-     * Prepare Data Source
-     *
-     * @param array $dataSource
-     * @return array
-     */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
-            $dataSource['data']['items']['category'] = 'Men';
-
-//            foreach ($dataSource['data']['items'] as & $item) {
-//                if ($item['category'] == 1) {
-//                    $item['status'] = 'Enable';
-//                }else{
-//                    $item['status'] = 'Disable';
-//                }
-//            }
+            foreach ($dataSource['data']['items'] as & $item) {
+                $item[$fieldName] = $this->getCategory($item['id']);;
+            }
         }
-
         return $dataSource;
     }
 
+    public function getCategory($post_id){
+        $catpost = $this->catpostFactory->create()->getCollection();
+        $catpost->addFieldToFilter('post_id',['eq' => "$post_id"]);
+        $list_id_cat = [];
+        // get cat_id
+        foreach ($catpost as $key=>$id)
+        {
+            array_push($list_id_cat, $id->getCategoryId());
+        }
+        // get cat name tu bang category
+        $catCollection = $this->categoryFactory->create()->getCollection();
+        $catCollection->addFieldToFilter('id', ['in' => $list_id_cat]);
+        $list_cat_name = $catCollection->getData();
+        $list_name = '';
+
+        foreach($list_cat_name as $name){
+           $list_name .= ', '.$name['name'];
+        }
+        $list_name = ltrim($list_name,',');
+       return $list_name;
+    }
 
 }
