@@ -31,38 +31,56 @@ class Save extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
 
-        $list_gall = '';
-        foreach($data['gallery'] as $value){
-            $list_gall .= ', '.$value['url'];
-        }
-        $list_gall = ltrim($list_gall,',');
-        $list_gall = trim($list_gall);
-
-
         if ($data) {
             $id = $this->getRequest()->getParam('id');
             if(!empty($id)){
+                $edit = true;
                 $model = $this->postFactory->create()->load($id);
                 if (!$model->getId() && $id) {
                     $this->messageManager->addErrorMessage(__('This post no longer exists.'));
-
                     return $resultRedirect->setPath('*/*/');
                 }
             }else{
+                $edit = false;
                 $model = $this->postFactory->create();
             }
-            $image=$model->getData('thumbnail');
-            $data['gallery'] = $list_gall;
-            // create url-key
+
+            // neu la edit
+            if($edit){
+                $image=$model->getData('thumbnail');
+            }else{   // neu la new
+                if(!isset($data['post_image'])){
+                    $data['thumbnail'] = 'http://via.placeholder.com/370x200';
+                    $data['gallery'] = 'http://via.placeholder.com/370x200,http://via.placeholder.com/370x200,http://via.placeholder.com/370x200';
+                }
+            }
+
+            // check gallery
+            $list_gall = '';
+            if(isset($data['post_gallery'])){
+                foreach($data['gallery'] as $value){
+                    $list_gall .= ','.$value['url'];
+                }
+                $list_gall = ltrim($list_gall,',');
+                $list_gall = trim($list_gall);
+                $data['gallery'] = $list_gall;
+            }else{
+                if(!$edit){  // neu khong ton tai va khac edit
+                    $data['gallery'] = 'http://via.placeholder.com/370x200, http://via.placeholder.com/370x200, http://via.placeholder.com/370x200';
+                }
+            }
+
+            // check image
+            if (isset($data['post_image']))
+            {
+                $data['thumbnail'] = $data['post_image'][0]['url'];
+            }else {
+                $data['thumbnail'] = 'http://via.placeholder.com/370x200';
+            }
+
             $data['url'] = $this->postSlug($data['name']);
             $model->setData($data);
 
-            if (isset($data['post_image'][0]['url']))
-            {
-                $model->setData('thumbnail',$data['post_image'][0]['url']);
-            }else {
-                $model->setData('thumbnail',$image);
-            }
 
             try {
 

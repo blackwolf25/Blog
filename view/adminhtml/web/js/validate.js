@@ -13,10 +13,7 @@ require(
             function (value) {
                 var to = $('input[name="publish_date_to"]').val();
                 var from = $('input[name="publish_date_from"]').val();
-                from = from.split("-");
-                to = to.split("-");
-                var f = new Date(from[2], from[1] - 1, from[0]);
-                var t= new Date(from[2], from[1] - 1, from[0]);
+
 
                 if(to < from){
                     return true;

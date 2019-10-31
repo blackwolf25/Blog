@@ -7,9 +7,12 @@
         'thumbnail'   => $post_detail->getThumbnail(),
         'description' => $post_detail->getDescription(),
         'content'     => $post_detail->getContent(),
-        'created_at'     => $post_detail->getCreatedAt(),
+        'created_at'  => $post_detail->getCreatedAt(),
+        'gallery'     => $post_detail->getGallery()
     ];
-
+   // var_dump($post['gallery']);
+    //die();
+    $gallery = explode( ',',$post['gallery']);
     $post_create_at = date('d-m-Y',strtotime($post['created_at']));
 ?>
 <div class="blog-container">
@@ -31,7 +34,15 @@
                     </div>
                 </div>
                 <div class="thumbnail">
-                    <img src="<?php echo $post['thumbnail']?>" alt="">
+                    <div id="slider">
+                    <ul>
+                        <?php
+                            foreach($gallery as $image){
+                        ?>
+                        <li><div class="image-wrapper"><img src="<?php echo $image ?>" alt=""></div></li>
+                        <?php } ?>
+                    </ul>
+                    </div>
                 </div>
                 <div class="description">
                     <h4><?php echo $post['description']?></h4>

@@ -10,6 +10,8 @@
         <css src="Smart_Blog/css/paginate.css"/>
         <css src="Smart_Blog/css/font-awesome.min.css"/>
         <css src="Smart_Blog/css/font-awesome.css"/>
+        <css src="Smart_Blog/css/slider.css"/>
+        <link src="Smart_Blog/js/slider.js"/>
         <link src="Smart_Blog/js/script.js"/>
         <link src="Smart_Blog/js/menu.js"/>
     </head>
