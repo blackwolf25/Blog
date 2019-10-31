@@ -132,11 +132,11 @@
                     <item name="dataScope" xsi:type="string">publish_date_from</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-custom-date-from" xsi:type="boolean">true</item>
+                        <item name="validate-custom-range" xsi:type="boolean">true</item>
                     </item>
                     <item name="options" xsi:type="array">
                         <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
-                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
-                        <item name="showsTime" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>
@@ -152,11 +152,10 @@
                     <item name="dataScope" xsi:type="string">publish_date_to</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-custom-date-to" xsi:type="boolean">true</item>
                     </item>
                     <item name="options" xsi:type="array">
                         <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
-                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
-                        <item name="showsTime" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>

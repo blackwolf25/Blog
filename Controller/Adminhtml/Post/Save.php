@@ -31,6 +31,12 @@ class Save extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
 
+        $list_gall = '';
+        foreach($data['gallery'] as $value){
+            $list_gall .= ', '.$value['url'];
+        }
+        $list_gall = ltrim($list_gall,',');
+        $list_gall = trim($list_gall);
 
 
         if ($data) {
@@ -46,7 +52,7 @@ class Save extends Action
                 $model = $this->postFactory->create();
             }
             $image=$model->getData('thumbnail');
-            $data['gallery'] = '';
+            $data['gallery'] = $list_gall;
             // create url-key
             $data['url'] = $this->postSlug($data['name']);
             $model->setData($data);
