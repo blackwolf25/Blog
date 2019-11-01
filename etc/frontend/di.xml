@@ -5,4 +5,16 @@
     <type name="Magento\Theme\Block\Html\Topmenu">
         <plugin name="navLinksTopmenu" type="Smart\Blog\Plugin\Block\Topmenu" sortOrder="300" />
     </type>
+
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array" >
+                <item name="blog" xsi:type="array">
+                    <item name="class" xsi:type="array">Smart\Blog\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">50</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>

@@ -9,6 +9,7 @@
                 'name'=>$post->getName(),
                 'thumbnail' => $post->getThumbnail(),
                 'description' => $post->getDescription(),
+                'created_at' => $post->getCreatedAt(),
             ];
     }
 ?>
@@ -36,6 +37,7 @@
                     <div class="col-8 float-left">
                         <h3 class="title"><a href="<?php echo $this->getUrl('*/post/detail',['id' => $post['id']]);?>"><?php echo $post['name'] ?></a></h3>
                         <div class="description"><?php echo $post['description'] ?></div>
+                        <div class="created_at"><?php echo date('d-m-Y',strtotime($post['created_at'])) ?></div>
                     </div>
                     <div class="clearfix"></div>
                 </div>

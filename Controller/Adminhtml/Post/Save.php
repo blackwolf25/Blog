@@ -75,7 +75,9 @@ class Save extends Action
             {
                 $data['thumbnail'] = $data['post_image'][0]['url'];
             }else {
-                $data['thumbnail'] = 'http://via.placeholder.com/370x200';
+                if(!$edit){
+                    $data['thumbnail'] = 'http://via.placeholder.com/370x200';
+                }
             }
 
             $data['url'] = $this->postSlug($data['name']);
