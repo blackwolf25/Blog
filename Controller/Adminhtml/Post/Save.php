@@ -58,7 +58,7 @@ class Save extends Action
             // check gallery
             $list_gall = '';
             if(isset($data['post_gallery'])){
-                foreach($data['gallery'] as $value){
+                foreach($data['post_gallery'] as $value){
                     $list_gall .= ','.$value['url'];
                 }
                 $list_gall = ltrim($list_gall,',');
